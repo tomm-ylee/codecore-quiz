@@ -1,0 +1,20 @@
+<%- include('./partials/header') %>
+    <h1>Sign In Page</h1>
+
+    <form method="post">
+      <div>
+        <label for"username">Username</label>
+        <br/>
+        <input type="text" class="input-text" name="username" id="username">
+      </div>
+
+      <div>
+        <label for"profile_pic">Profile Picture</label>
+        <br/>
+        <input type="text" class="input-text" name="profile_pic" id="profile_pic" placeholder="Optional">
+      </div>
+
+      <input class="btn btn-dark" type="submit" value="Submit">
+    </form>
+
+<%- include('./partials/footer') %>

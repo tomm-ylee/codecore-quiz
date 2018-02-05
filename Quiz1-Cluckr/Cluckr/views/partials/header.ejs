@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cluckr!</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+
+    <script src="/javascripts/jquery-3.2.1.slim.min.js" charset="utf-8"> </script>
+    <script src="/javascripts/popper.min.js" charset="utf-8"> </script>
+    <script src="/javascripts/bootstrap.min.js" charset="utf-8"> </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+      <a class="navbar-brand" href="/"><img src="http://clipart-library.com/images/BcgE5KjLi.jpg"/></a>
+
+      <div>
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/show_clucks">See Clucks</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/new_cluck">Cluck!</a>
+          </li>
+
+          <% if (username) { %>
+            <form action="/" method="post">
+              <input class="btn btn-dark" type="submit" value="Sign Out">
+            </form>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/sign_in">Sign In</a>
+            </li>
+          <% } %>
+
+        </ul>
+      </div>
+
+    </nav>
+    <div class="container">
