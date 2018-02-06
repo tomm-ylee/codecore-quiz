@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
       knex
         .select()
         .from('trends')
+        .whereNotNull('counter')
         .orderBy('counter', 'DESC')
         .limit(10)
         .then(allTrends => {

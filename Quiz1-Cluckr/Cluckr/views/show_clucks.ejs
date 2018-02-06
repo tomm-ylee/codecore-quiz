@@ -7,13 +7,13 @@
       <div class="hidden-sm-down col-md-4 col-lg-4" id="trending-list">
         <div class="card">
           <h4>Trending Now</h4></li>
-            <% for (let hash of allTrends) { %>
-              <p><%= hash.hashtag %><p>
+            <% for (let trend of allTrends) { %>
+              <p><%= trend.hashtag %> • <%= trend.counter %><p>
             <% } %>
         </div>
       </div>
 
-      <div class="col-md-8 col-lg-8" id="cluck">
+      <div class="col-sm-12 col-md-8 col-lg-8" id="cluck">
         <% for (let cluck of allClucks) { %>
           <div class="cluck-card card">
             <div class="row">
