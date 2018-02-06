@@ -6,12 +6,20 @@ const knex = require('../db');
 router.get('/', (req, res) => {
   let username = req.cookies.username;
   knex
-  .select()
-  .from('clucks')
-  .orderBy('created_at', 'DESC')
-  .then(allClucks => {
-    res.render('show_clucks', {username, allClucks});
-  });
+    .select()
+    .from('clucks')
+    .orderBy('created_at', 'DESC')
+    .limit(10)
+    .then(allClucks => {
+      knex
+        .select()
+        .from('trends')
+        .orderBy('counter', 'DESC')
+        .limit(10)
+        .then(allTrends => {
+          res.render('show_clucks', {username, allClucks, allTrends});
+        })
+    });
 });
 
 // PATH: /index VERB: POST

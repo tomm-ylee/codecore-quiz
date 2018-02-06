@@ -3,75 +3,87 @@
     <% if (allClucks.length === 0) { %>
       <p> No clucks yet </p>
     <% } %>
-
-    <% for (let cluck of allClucks) { %>
-      <div class="cluck-card card container">
-        <div class="row">
-          <div class="col profile">
-            <img class="profile" src="<%=cluck.profile_pic%>"/>
-          </div>
-          <div class="col cluck-content">
-
-            <% let timeDiff = new Date().getTime() - cluck.created_at.getTime() %>
-            <% let timeAgo, quantity, unit %>
-            <% if (timeDiff > 1000 * 60 * 60 * 24 * 365) { %>
-              <% quantity = Math.floor(timeDiff/(1000 * 60 * 60 * 24 * 365)) %>
-              <% unit = "year" %>
-            <% } else if (timeDiff > 1000 * 60 * 60 * 24 * 365 / 12) { %>
-              <% quantity = Math.floor(timeDiff/(1000 * 60 * 60 * 24 * 365 / 12)) %>
-              <% unit = "month" %>
-            <% } else if (timeDiff > 1000 * 60 * 60 * 24 * 7) { %>
-              <% quantity = Math.floor(timeDiff/(1000 * 60 * 60 * 24 * 7)) %>
-              <% unit = "week" %>
-            <% } else if (timeDiff > 1000 * 60 * 60 * 24) { %>
-              <% quantity = Math.floor(timeDiff/(1000 * 60 * 60 * 24)) %>
-              <% unit = "day" %>
-            <% } else if (timeDiff > 1000 * 60 * 60) { %>
-              <% quantity = Math.floor(timeDiff/(1000 * 60 * 60)) %>
-              <% unit = "hour" %>
-            <% } else if (timeDiff > 1000 * 60) { %>
-              <% quantity = Math.floor(timeDiff/(1000 * 60)) %>
-              <% unit = "minute" %>
+    <div class="row">
+      <div class="hidden-sm-down col-md-4 col-lg-4" id="trending-list">
+        <div class="card">
+          <h4>Trending Now</h4></li>
+            <% for (let hash of allTrends) { %>
+              <p><%= hash.hashtag %><p>
             <% } %>
-            <% if (timeDiff <= 1000 * 60) { %>
-              <% timeAgo = "Just now" %>
-            <% } else { %>
-              <% timeAgo = `${quantity} ${unit}${(quantity > 1) ? "s":""} ago` %>
-            <% } %>
-
-            <div class="row">
-              <div class="col">
-                <h6>
-                  <%= cluck.username %> • <%= timeAgo %>
-                </h6>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p><%= cluck.cluck_content %></p>
-              </div>
-            </div>
-
-            <% if (cluck.image_url) { %>
-            <div class="row">
-              <div class="col">
-                <img src="<%= cluck.image_url %>"/>
-              </div>
-            </div>
-            <% } %>
-
-            <div class="row delete-row">
-              <div class="col">
-                <form action="/show_clucks/<%= cluck.id %>/delete" method="post">
-                  <input type="submit" class="delete btn btn-primary" value="Delete">
-                </form>
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
-    <% } %>
+
+      <div class="col-md-8 col-lg-8" id="cluck">
+        <% for (let cluck of allClucks) { %>
+          <div class="cluck-card card">
+            <div class="row">
+              <div class="col profile">
+                <img class="profile" src="<%=cluck.profile_pic%>"/>
+              </div>
+              <div class="col cluck-content">
+
+                <% let timeDiff = new Date().getTime() - cluck.created_at.getTime() %>
+                <% let timeAgo, quantity, unit %>
+                <% if (timeDiff > 1000 * 60 * 60 * 24 * 365) { %>
+                  <% quantity = Math.floor(timeDiff/(1000 * 60 * 60 * 24 * 365)) %>
+                  <% unit = "year" %>
+                <% } else if (timeDiff > 1000 * 60 * 60 * 24 * 365 / 12) { %>
+                  <% quantity = Math.floor(timeDiff/(1000 * 60 * 60 * 24 * 365 / 12)) %>
+                  <% unit = "month" %>
+                <% } else if (timeDiff > 1000 * 60 * 60 * 24 * 7) { %>
+                  <% quantity = Math.floor(timeDiff/(1000 * 60 * 60 * 24 * 7)) %>
+                  <% unit = "week" %>
+                <% } else if (timeDiff > 1000 * 60 * 60 * 24) { %>
+                  <% quantity = Math.floor(timeDiff/(1000 * 60 * 60 * 24)) %>
+                  <% unit = "day" %>
+                <% } else if (timeDiff > 1000 * 60 * 60) { %>
+                  <% quantity = Math.floor(timeDiff/(1000 * 60 * 60)) %>
+                  <% unit = "hour" %>
+                <% } else if (timeDiff > 1000 * 60) { %>
+                  <% quantity = Math.floor(timeDiff/(1000 * 60)) %>
+                  <% unit = "minute" %>
+                <% } %>
+                <% if (timeDiff <= 1000 * 60) { %>
+                  <% timeAgo = "Just now" %>
+                <% } else { %>
+                  <% timeAgo = `${quantity} ${unit}${(quantity > 1) ? "s":""} ago` %>
+                <% } %>
+
+                <div class="row">
+                  <div class="col">
+                    <h6>
+                      <%= cluck.username %> • <%= timeAgo %>
+                    </h6>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <p><%= cluck.cluck_content %></p>
+                  </div>
+                </div>
+
+                <% if (cluck.image_url) { %>
+                <div class="row">
+                  <div class="col">
+                    <img src="<%= cluck.image_url %>"/>
+                  </div>
+                </div>
+                <% } %>
+
+                <div class="row delete-row">
+                  <div class="col">
+                    <form action="/show_clucks/<%= cluck.id %>/delete" method="post">
+                      <input type="submit" class="delete btn btn-primary" value="Delete">
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
 
 <%- include('./partials/footer') %>

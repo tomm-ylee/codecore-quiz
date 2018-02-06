@@ -1,3 +1,8 @@
+body > div.container {
+  padding:0;
+  margin: 0 15px 0 50px;
+}
+
 .input-text {
   border-width: 2px;
   border-style: inset;
@@ -11,13 +16,20 @@
 }
 
 .cluck-card.card {
-  max-width: 500px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card > * {
+  flex-shrink: 0;
 }
 
 .card {
   padding: 10px;
   box-shadow: 2px 2px grey;
   min-height: 100px;
+  min-width: 100px;
   margin: 20px;
 }
 
@@ -51,4 +63,10 @@ nav img {
 img.profile {
   width: 3rem;
   height: auto;
+}
+@media only screen and (max-width: 768px) {
+
+  #trending-list {
+    display: none;
+  }
 }
