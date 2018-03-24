@@ -1,0 +1,29 @@
+<%- include('./partials/header') %>
+    <h1>New Cluck</h1>
+
+    <% if (username) { %>
+      <div class="cluck-card container card">
+        <form method="post">
+        <label for"content">Content</label>
+            <br/>
+        <textarea
+          class="input-text"
+          name="content"
+          id="content"
+          rows="5"
+          placeholder="Cluckin' all day er' day."
+          required
+        ></textarea>
+        <label for="image_url">Image Url</label>
+            <br/>
+        <input class="input-text" type="text" name="image_url" id="image_url">
+
+        <input class="btn btn-dark" type="submit" value="Submit">
+        </form>
+      </div>
+    <% } else { %>
+      <p>Please sign in</p>
+    <% } %>
+
+
+<%- include('./partials/footer') %>

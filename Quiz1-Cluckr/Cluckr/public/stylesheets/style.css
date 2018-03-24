@@ -1,0 +1,67 @@
+
+body > div.container {
+  padding:0;
+  margin: 0 10px 0 50px;
+}
+
+.input-text {
+  border-width: 2px;
+  border-style: inset;
+  border-radius: 5px;
+  margin: 5px 0 10px 0;
+  resize: none;
+}
+
+.card .input-text {
+  width: 100%
+}
+
+.cluck-card.card {
+  max-width: 1000px;
+}
+
+.card > * {
+  flex-shrink: 0;
+}
+
+.card {
+  padding: 10px;
+  box-shadow: 2px 2px grey;
+  min-height: 100px;
+  min-width: 100px;
+  margin: 20px;
+}
+
+input.delete {
+  padding:0;
+  font-size: 6pt;
+  margin-bottom: 2px;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.cluck-content img {
+  width: 100%;
+
+}
+
+div.profile{
+  max-width: 4rem;
+}
+
+nav img {
+  height: 3rem;
+  width: auto;
+}
+
+img.profile {
+  width: 3rem;
+  height: auto;
+}
+@media only screen and (max-width: 768px) {
+  #trending-list {
+    display: none;
+  }
+}
